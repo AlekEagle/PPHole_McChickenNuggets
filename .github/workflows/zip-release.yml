@@ -42,10 +42,9 @@ jobs:
           token: ${{ secrets.THUNDERSTORE_TOKEN }}
           community: lethal-company
           namespace: alekeagle
-          description: ''
           repo: thunderstore.io
-          name: ''
-          version: ''
+          name: 'doesnt'
+          version: 'matter'
           file: PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip
           categories: |
             modpacks
