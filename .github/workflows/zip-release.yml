@@ -34,3 +34,16 @@ jobs:
           makeLatest: true
           tag: ${{ steps.get_version.outputs.version_number }}
           bodyFile: 'src/README.md'
+
+      # Publish to Thunderstore
+      - name: Publish to Thunderstore
+        uses: GreenTF/upload-thunderstore-package@v4.2
+        with:
+          token: ${{ secrets.THUNDERSTORE_TOKEN }}
+          community: Lethal Company
+          namespace: alekeagle
+          name: PPHole_McChickenNuggets
+          version: ${{ steps.get_version.outputs.version_number }}
+          path: PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip
+          categories: |
+            modpacks
