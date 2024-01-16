@@ -43,8 +43,8 @@ jobs:
           community: lethal-company
           namespace: alekeagle
           repo: thunderstore.io
-          name: 'doesnt'
-          version: 'matter'
+          name: 'PPHole McChickenNuggets'
+          version: ${{ steps.get_version.outputs.version_number }}
           file: PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip
           categories: |
             modpacks
