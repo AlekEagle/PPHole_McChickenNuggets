@@ -23,7 +23,7 @@ jobs:
 
       # Zip everything in the src folder. to a zipfile "PPHole_McChickenNuggets-v{version_number}.zip" (src should NOT be included in the zip, only the contents of src)
       - name: Zip everything in src folder
-        run: zip -r PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip src/*
+        run: (cd src && zip -r ../PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip .)
 
       # Upload the zipfile to the release.
       - name: Create Release
