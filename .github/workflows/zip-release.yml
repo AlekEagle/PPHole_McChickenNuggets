@@ -32,4 +32,5 @@ jobs:
           artifacts: PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip
           token: ${{ secrets.GITHUB_TOKEN }}
           makeLatest: true
+          tag: ${{ steps.get_version.outputs.version_number }}
           bodyFile: 'src/README.md'
