@@ -40,7 +40,7 @@ jobs:
         uses: GreenTF/upload-thunderstore-package@v4.2
         with:
           token: ${{ secrets.THUNDERSTORE_TOKEN }}
-          community: Lethal Company
+          community: lethal-company
           namespace: alekeagle
           name: PPHole_McChickenNuggets
           version: ${{ steps.get_version.outputs.version_number }}
