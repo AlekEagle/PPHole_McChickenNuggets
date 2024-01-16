@@ -42,9 +42,10 @@ jobs:
           token: ${{ secrets.THUNDERSTORE_TOKEN }}
           community: lethal-company
           namespace: alekeagle
-          description: 'L Bozo Modpack'
-          name: PPHole_McChickenNuggets
-          version: ${{ steps.get_version.outputs.version_number }}
+          description: ''
+          repo: thunderstore.io
+          name: ''
+          version: ''
           file: PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip
           categories: |
             modpacks
