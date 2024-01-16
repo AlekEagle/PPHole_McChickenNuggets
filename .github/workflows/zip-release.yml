@@ -1,0 +1,35 @@
+name: Packaging the funny.
+
+on:
+  # Trigger the workflow on push to the master branch.
+  push:
+    branches: [master]
+
+  # Allow manual triggering from the Actions tab.
+  workflow_dispatch:
+
+  # The jobs that need to be done.
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository.
+      - uses: actions/checkout@v2
+
+      # Get "version_number" from manifest.json and set it as an environment variable. (Our release tag)
+      - name: Get version number
+        id: get_version
+        run: echo "::set-output name=version_number::$(jq -r '.version_number' src/manifest.json)"
+
+      # Zip everything in the src folder. to a zipfile "PPHole_McChickenNuggets-v{version_number}.zip" (src should NOT be included in the zip, only the contents of src)
+      - name: Zip everything in src folder
+        run: zip -r PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip src/*
+
+      # Upload the zipfile to the release.
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: PPHole_McChickenNuggets-v${{ steps.get_version.outputs.version_number }}.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+          makeLatest: true
+          bodyFile: 'src/README.md'
